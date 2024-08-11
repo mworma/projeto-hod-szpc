@@ -1,0 +1,115 @@
+body{
+    /*Carregar font Poppins para todos os itens do bloco Body */
+    font-family: "Poppins", sans-serif; 
+        /*altera a cor de onde está sendo alterado no momento */
+    background-color: aqua;
+    /*tirar o scrool (barra de rolagem) inferior (esquerda e direita) */
+    max-width: 1280px;
+    margin: 0 auto;     /* centraliza no meio da tela, dividindo o espaço vazio metade para direita, e metade para esquerda*/
+    
+}
+
+.carrossel{
+    /*Neste bloco vamos configurar a forma da imagem ao aparecer no fundo conforme selecionado no carrossel */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;    /*coloca a imagem para trás, o eixo z é o eixo de profundidade, tipo eixo x, y, z */
+}
+
+.informacoes{
+    /*Neste bloco vamos configurar a caixa de informações para que não apareçam os testos qunado NÃO estiverem selecionado no carrossel */
+    display: none;
+}
+
+.informacoes.ativa{
+    /*Neste bloco vamos configurar a caixa de informações para que não apareçam os testos qunado estiverem selecionado no carrossel */
+    display: block;
+}
+
+.conteudo{
+    display: flex;
+    /* o flex tem um comportamento de pai e filho, em que suas definições são repassadas aos filhos (todos os sub-blocos que estão detro dele */
+    flex-direction: column; /* define a direção do flex em coluna */
+    justify-content: space-evenly; 
+    /*justify-content = justificar o conteúdo 
+    space-evenly = com espaço uniforme */
+    min-height: 100vh;  /*posiciona dividido uniforme na altura da tela */
+}
+
+.informacoes h1{
+    font-size: 35px;
+    color: #ffffff;
+    margin-bottom: 80px; /*espaçamento externo entre os objetos (botton é embaixo) */
+    font-family: "GOT";
+    letter-spacing: 8px;    /*espaçamento entre as letras */
+}
+
+@font-face {
+    font-family: "GOT";
+    src: url(../fontes/GOT.ttf);    /*../ volta uma pasta anterior */
+}
+
+.informacoes .descricao{
+    width: 49%;             /* pega 49% da largura da tela */
+    font-size: 24px;
+    color: #ffffff;
+    list-style: 40px;       /* list-style = espaçamento das linhas */
+    height: 300px;          /* define a altura em 300 px do texto */
+    overflow: auto;         /* caso o texto seja maior q o espaço disponível, vai criar uma barra de rolagem para a caixa em questão. */
+    padding-right: 15px;    /* para a caixa desgrudar do scroll, para facilitar a leitura */
+}
+
+.botoes-carrossel{
+    display: flex;
+    justify-content: center;
+    gap: 20px;      /*espaçamento de 20 px entre os elementos/botões */
+}
+
+.botoes-carrossel .botao{
+    width: 15px;        /* largura */
+    height: 15px;       /* altura */
+    border-radius: 50%; /* arredondar os cantos em 50%*/
+    border: 2px solid transparent;   /*definindo borda de 2px de tamanho na cor sólida transparente */
+    cursor: pointer;    /* muda o cursos como ponteiro - que fica mais visível ao usuário de que é um botão */
+    border-color: #ffffff;
+}
+
+.botoes-carrossel .botao.selecionado{
+    background-color: #1d8346;
+}
+
+.imagem{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;  /* faça caber no espaço ou faça cobrir o espaço */
+    display: none;      /* oculta as imagens que não estão sendo selecionadas*/
+}
+
+.imagem.ativa{
+    display: block;                 /* mostra somente a imagem selecionada */
+    animation: mudarImagem 0.7s;    /*tempo de demora para gerar a animação */
+}
+
+@keyframes mudarImagem{
+    /* criado para gerar animação - inicia opaco e finaliza visivel*/
+    from{
+        opacity: 0.85;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+main:after{
+    /* depois do main, cria um pseudo elemento */
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(120deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0.05926120448179273) 50%, rgba(0,0,0,1) 90%);
+    z-index: -1;
+}

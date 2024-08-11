@@ -1,0 +1,9 @@
+*{
+    /* margem entre os objeos e/ou bordas */
+    margin: 0; 
+    /* espaçamento interno dos elementos */
+    padding: 0;
+    /* para definir as larguras e alturas das caixas / boxs */
+    box-sizing: border-box;
+    
+}
